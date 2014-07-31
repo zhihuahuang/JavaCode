@@ -1,6 +1,3 @@
-/**
- * @author Zevo
- */
 package code.java.digest;
 
 import java.security.MessageDigest;
@@ -8,20 +5,20 @@ import java.security.NoSuchAlgorithmException;
 
 import code.java.util.BaseConversion;
 
-public class MD5 {
+public class SHA256 {
 	private static MessageDigest messageDigest;
 	private static NoSuchAlgorithmException exception;
 
 	static {
 		try {
-			messageDigest = MessageDigest.getInstance("MD5");
+			messageDigest = MessageDigest.getInstance("SHA-256");
 		} catch (NoSuchAlgorithmException e) {
 			exception = e;
 		}
 	}
 
 	/**
-	 * Generate a byte array by MD5.
+	 * Generate a byte array by SHA-256.
 	 * 
 	 * @param input
 	 *            is a byte array
@@ -33,11 +30,11 @@ public class MD5 {
 			throw exception;
 
 		messageDigest.update(input);
-		return messageDigest.digest(); // MD5
+		return messageDigest.digest(); // SHA-256
 	}
 
 	/**
-	 * Generate a lower case hex string by MD5.
+	 * Generate a lower case hex string by SHA-256.
 	 * 
 	 * @param input
 	 *            is a byte array
