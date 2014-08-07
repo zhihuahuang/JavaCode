@@ -3,8 +3,11 @@ package code.java.digest;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import code.java.util.BaseConversion;
-
+/**
+ * A SHA-256 Class
+ * @author Zevo
+ * @modified 2014-08-06
+ */
 public class SHA256 {
 	private static MessageDigest messageDigest;
 	private static NoSuchAlgorithmException exception;
@@ -15,6 +18,9 @@ public class SHA256 {
 		} catch (NoSuchAlgorithmException e) {
 			exception = e;
 		}
+	}
+
+	private SHA256() {
 	}
 
 	/**
@@ -31,18 +37,6 @@ public class SHA256 {
 
 		messageDigest.update(input);
 		return messageDigest.digest(); // SHA-256
-	}
 
-	/**
-	 * Generate a lower case hex string by SHA-256.
-	 * 
-	 * @param input
-	 *            is a byte array
-	 * @return A lower case hex string
-	 * @throws NoSuchAlgorithmException
-	 */
-	public static String generateHexString(byte[] input)
-			throws NoSuchAlgorithmException {
-		return BaseConversion.bytesToHexString(generate(input));
 	}
 }
