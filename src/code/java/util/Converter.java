@@ -6,16 +6,21 @@ package code.java.util;
  * @modified 2014-08-06
  */
 public class Converter {
-	public static final int BINARY = 0x2;
-	public static final int OCTAL = 0x8;
-	public static final int HEX = 0x10;
-	public static final int DECIMAL = 0xa;
-
+	public enum Radix{
+		BINARY(0x2),
+		OCTAL(0x8),
+		HEX(0x10),
+		DECIMAL(0xa);
+		Radix(int v){value=v;}
+		int value = 0;
+		public int value(){return value;}
+	}
+	
 	private Converter() {
 	}
 
-	public static String toString(int integer, int radix) {
-		return Integer.toString(integer, radix);
+        public static String toString(int integer, Radix r) {
+		return Integer.toString(integer, r.value());
 	}
 
 	public static String toBinaryString(int integer) {
@@ -30,8 +35,8 @@ public class Converter {
 		return Integer.toHexString(integer);
 	}
 
-	public static int toInteger(String string, int radix) {
-		return Integer.parseInt(string, radix);
+	public static int toInteger(String string, Radix r) {
+		return Integer.parseInt(string, r.value());
 	}
 
 	public static int binaryToInteger(String string) {
